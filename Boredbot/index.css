@@ -1,7 +1,8 @@
 body {
-    background: #D31027;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #EA384D, #D31027);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #EA384D, #D31027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    background: #bdc3c7;
+    background: -webkit-linear-gradient(to top, #2c3e50, #bdc3c7);
+    background: linear-gradient(to top, #2c3e50, #bdc3c7); 
+    background-repeat: no-repeat;
     font-family: "Lora", serif;
 }
 
@@ -14,8 +15,11 @@ body {
 }
 
 button {
-    padding: 10px;
-    border: none;
+    padding: 50px;
+    border: 1px solid darkkhaki;
     border-radius: 50px;
+    background-color: #bdc3c7;
+    color: #f2f2f2;
+    cursor: pointer;
     
 }
