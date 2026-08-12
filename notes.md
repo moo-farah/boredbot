@@ -35,3 +35,27 @@ Is how JavaScript handles operations that take time - like reading a database, f
 
 **The core problem it solve**: JavaScript is single-threaded - it can only do one thing at a time. If a database query takes 200ms and JS just sat there waiting, your entire server would freeze for those 200ms and couldn't handle any other requests.
 
+## HTTP (Hyper Text Transfer Protocol)
+Is a protocol used for transfering data over the web between clients (like browsers) and servers.
+
+**Quick rundown:**
+* **What it does:** Defines how requests and responses are formatted when a browser (or app) talks to a server - e.g., asking for a webpage, submitting a form, or fetching an image.
+* **Methods:** GET (retrieve data), POST (send data), PUT/PATCH (update), DELETE (remove), etc.
+* **Stateless:** Each request is independent - the server does not remember previous requests unless you add something like cookies or tokens.
+* **HTTPS:** The secure version, encrypted with TLS/SSL
+
+**Components of Request**
+1. Path (URL)
+2. Method
+  - GET, POST, PUT, DELETE
+  - Others (PATCH, OPTIONS, etc)
+3. Body
+  - The actual data beign sent - used with POST, PUT, PATCH, not typically present on GET request.
+4. Headers
+  - key-value pairs with metadata about the request
+  - Content-Type: "application/json"
+
+
+**Path (URL):**
+ - BaseURL: https://www.mohamedfarah.dev
+ - Endpoint: /about 
