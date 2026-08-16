@@ -34,16 +34,4 @@ form {
     align-items: start;
     flex-direction: column;
     gap: 10px;
-}
-
-button {
-    flex-grow: 1;
-    padding: 10px;
-    background-color: blueviolet;
-    color: whitesmoke;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-}
+} 

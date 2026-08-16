@@ -1,44 +1,58 @@
-// fetcing the data from the api: 
+// fetching the data from the api: 
 // "https://apis.scrimba.com/jsonplaceholder/posts"
 
+let postArray = []
+
+function renderPost() {
+    let emptyArr = ""
+    for (let post of postArray) {
+        emptyArr += `
+         <h3>${post.title}</h3>
+         <p>${post.body}</p>
+         <hr />
+        `
+    }
+    document.getElementById('blog-list').innerHTML = emptyArr
+}
 
 fetch("https://apis.scrimba.com/jsonplaceholder/posts")
+.then(res => res.json())
+.then(data => {
+    // slice to 5
+    postArray = data.slice(0, 5)
+    renderPost()
+   
+})
+
+// Add event listener to form
+document.getElementById("new-post").addEventListener('submit', function(e) {
+    e.preventDefault();
+    const postTitle = document.getElementById('post-title').value
+    const postBody = document.getElementById('post-body').value
+    
+    if (!postTitle || !postBody) {
+        alert("Please fill in both title and body");
+        return;
+    }
+    
+    const data = {
+        title: postTitle, 
+        body: postBody   
+    }
+
+    const options = {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+    fetch("https://apis.scrimba.com/jsonplaceholder/posts", options)
     .then(res => res.json())
-    .then(data => {
-        // slice to 5
-        const itemList = data.slice(0, 5)
-        console.log(itemList);
-
-        //  display the `title` and `body` properties of the first 5 posts on the browser page.
-
-        let emptyArr = "";   // empty string
-
-        // looping and build the HTML string
-        itemList.forEach(post => {
-            emptyArr += 
-            `
-            <h2>${post.title}</h2>
-            <p>${post.body}</p>
-            `
-        });
-
-        document.getElementById("posts").innerHTML = emptyArr;
-    })
-
-    // form handling
-
-    const form = document.getElementById('post-form');
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const title = document.getElementById('post-title').value;
-        const body = document.getElementById('post-body').value;
-
-        const post = {
-            title,
-            body
-        };
-
-        console.log(post);
-    })
+    .then(post => {
+      postArray.unshift(post)
+      renderPost()
+      document.getElementById('new-post').reset();
+    });
+});
